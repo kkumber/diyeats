@@ -1,5 +1,8 @@
 import { useEffect, useState } from "react"
 import useFetch from "../hooks/useFetch"
+import SearchResult from "./SearchResult"
+import { Link } from "react-router-dom"
+
 
 export interface ItemInterface {
     id: number,
@@ -35,6 +38,8 @@ const Home = () => {
                 <button className="searchBtn">Search</button>
             </form>
             </div>
+
+            <Link to={{pathname: "/SearchResult", state: item} as any} />
         </div>
     )
 }

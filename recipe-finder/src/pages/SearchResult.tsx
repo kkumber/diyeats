@@ -1,19 +1,29 @@
 import { ItemInterface } from "./Home";
 import { Link } from "react-router-dom";
+import useFetch from "../hooks/useFetch";
+import { useLocation } from "react-router-dom";
 
 interface ItemList {
-    item: ItemInterface[],
+    item: ItemInterface[] | undefined,
 }
 
-const SearchResult = ({ item }: ItemList) => {
+const SearchResult = () => {
+    const {data, loading, error} = useFetch('https://api.spoonacular.com/recipes/{id}/information');
+    const location = useLocation();
+    const item = location.state as ItemList;
+
+    
     return (
         <div className="searchResults">
-            {item.map(food => 
+            {item?.map(food => 
                 <div className="foodContainer" key={food.id}>
-                    <title>{ food.title }</title>
-                    <img src={food.image} alt="Food Image" />
+                    <div className="titleContainer">
+                        <title>{ food.title }</title>
+                    </div>
+                    <div className="imageContainer">
+                        <img src={food.image} alt="Food Image" />
+                    </div>
                 </div>
-
             )}
         </div>
     );

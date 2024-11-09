@@ -5,13 +5,17 @@ import { Link } from "react-router-dom"
 import { useNavigate } from "react-router-dom"
 import Loading from "../components/Loading"
 import ErrorPage from "../components/ErrorPage"
+import Ingredients from "../components/Ingredients"
+
 
 
 export interface ItemInterface {
-    id: number,
-    title: string,
-    image: string
+    id: number;
+    title: string;
+    image: string;
 }
+
+
 
 const Home = () => {
     const APIKEY = 'ae98638f897c4eb79d6f212f141affb8';
@@ -20,10 +24,8 @@ const Home = () => {
     const navigate = useNavigate();
 
     const {data: itemData, loading, error: dataError} = useFetch(``);
-    const [item, setItem] = useState<ItemInterface[]>();
-    const [isLoading, setIsLoading] = useState<boolean>(loading);
     const [error, setError] = useState<string | null>(dataError);
-    
+
 
     const handleQuery = (e: React.FormEvent<HTMLFormElement>): void => {
         e?.preventDefault();
@@ -42,7 +44,6 @@ const Home = () => {
                 <button className="searchBtn">Search</button>
             </form>
             </div>
-
         </div>
     )
 }

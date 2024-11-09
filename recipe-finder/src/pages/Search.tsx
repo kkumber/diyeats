@@ -35,7 +35,7 @@ const Search = () => {
             {item.map(food => 
                 <div className="foodContainer" key={food.id}>
                     <div className="titleContainer">
-                        <title><h1>{ food.title }</h1></title>
+                        <h1>{ food.title }</h1>
                     </div>
                     <div className="imageContainer">
                         <img src={food.image} alt="Food Image" />

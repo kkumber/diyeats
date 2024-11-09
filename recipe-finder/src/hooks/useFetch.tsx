@@ -23,10 +23,14 @@ const useFetch = (url: string) => {
                 }
                 const jsonData = await response.json();
                 setData(jsonData);
-            } catch (error) {
-                setError((error as Error).message);
+            } catch (err: any) {
+                if (err.name !== 'AbortError') {
+                setError((err as Error).message);
+                }
             } finally {
+                if (!signal.aborted){
                 setLoading(false);
+                }
             }
         }
 

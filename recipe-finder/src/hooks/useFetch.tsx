@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import Loading from "../components/Loading";
-import Error from "../components/ErrorPage";
+import ErrorPage from "../components/ErrorPage";
 
 
 const useFetch = (url: string) => {
@@ -37,8 +37,7 @@ const useFetch = (url: string) => {
         }
     }, [url])
 
-    {loading && <Loading />}
-    {error && <ErrorPage error={error} />}
+
     return { data, loading, error }
 }
 

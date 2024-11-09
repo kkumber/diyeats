@@ -3,6 +3,8 @@ import useFetch from "../hooks/useFetch"
 import Search from "./Search"
 import { Link } from "react-router-dom"
 import { useNavigate } from "react-router-dom"
+import Loading from "../components/Loading"
+import ErrorPage from "../components/ErrorPage"
 
 
 export interface ItemInterface {
@@ -29,7 +31,9 @@ const Home = () => {
     }
 
     return (
-        <div className="home">'
+        <div className="home">
+            {loading && <Loading />}
+            {error && <ErrorPage error={error} />}
             <div className="form-container">
             <form onSubmit={handleQuery}>
                 <input type="text" onChange={(e) => setQuery(e.target.value)} 

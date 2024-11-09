@@ -3,6 +3,9 @@ import { Link } from "react-router-dom";
 import useFetch from "../hooks/useFetch";
 import { useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
+import Loading from "../components/Loading"
+import ErrorPage from "../components/ErrorPage"
+
 
 interface ItemList {
     item: ItemInterface[],
@@ -26,6 +29,9 @@ const Search = () => {
 
     return (
         <div className="searchResults">
+            {loading && <Loading />}
+            {error && <ErrorPage error={error} />}
+
             {item.map(food => 
                 <div className="foodContainer" key={food.id}>
                     <div className="titleContainer">

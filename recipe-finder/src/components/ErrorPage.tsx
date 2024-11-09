@@ -1,4 +1,4 @@
-interface ErrorValue {
+export interface ErrorValue {
     error: string | null
 }
 

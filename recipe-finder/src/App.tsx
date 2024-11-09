@@ -3,7 +3,7 @@ import logo from './logo.svg';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Home from './pages/Home';
 import Search from './pages/Search';
-import FoodRecipe from './pages/FoodRecipe';
+import Meal from './pages/Meal';
 
 function App() {
   return (
@@ -13,7 +13,7 @@ function App() {
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/pages/Search' element={<Search />}/>
-        <Route path='/pages/FoodRecipe' element={<FoodRecipe />}/>
+        <Route path='/pages/Meal' element={<Meal />}/>
       </Routes>
       </main>
     </div>

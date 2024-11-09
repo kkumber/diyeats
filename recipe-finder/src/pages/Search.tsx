@@ -3,14 +3,12 @@ import { Link } from "react-router-dom";
 import useFetch from "../hooks/useFetch";
 import { useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
-import Loading from "../components/Loading";
-import Error from "../components/Error";
 
 interface ItemList {
     item: ItemInterface[],
 }
 
-const SearchResult = () => {
+const Search = () => {
     const APIKEY = 'ae98638f897c4eb79d6f212f141affb8';
     const location = useLocation();
     const queryParams = new URLSearchParams(location.search);
@@ -28,8 +26,6 @@ const SearchResult = () => {
 
     return (
         <div className="searchResults">
-            {loading && <Loading />}
-            {error && <Error error={error} />}
             {item.map(food => 
                 <div className="foodContainer" key={food.id}>
                     <div className="titleContainer">
@@ -44,4 +40,4 @@ const SearchResult = () => {
     );
 }
 
-export default SearchResult;
+export default Search;

@@ -2,7 +2,7 @@ import React from 'react';
 import logo from './logo.svg';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Home from './pages/Home';
-import SearchResult from './pages/SearchResult';
+import Search from './pages/Search';
 import FoodRecipe from './pages/FoodRecipe';
 
 function App() {
@@ -12,7 +12,7 @@ function App() {
       <main>
       <Routes>
         <Route path='/' element={<Home />} />
-        <Route path='/pages/SearchResult' element={<SearchResult />}/>
+        <Route path='/pages/Search' element={<Search />}/>
         <Route path='/pages/FoodRecipe' element={<FoodRecipe />}/>
       </Routes>
       </main>

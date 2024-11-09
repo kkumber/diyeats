@@ -6,7 +6,7 @@ interface FoodID {
 
 
 // {id}: FoodID
-const FoodRecipe = () => {
+const Meal = () => {
     const {data, loading, error} = useFetch(`https://api.spoonacular.com/recipes/{id}/information`);
 
     return ( 
@@ -16,4 +16,4 @@ const FoodRecipe = () => {
      );
 }
  
-export default FoodRecipe;
+export default Meal;

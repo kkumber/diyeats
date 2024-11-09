@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import useFetch from "../hooks/useFetch"
-import SearchResult from "./SearchResult"
+import Search from "./Search"
 import { Link } from "react-router-dom"
 import { useNavigate } from "react-router-dom"
 
@@ -25,7 +25,7 @@ const Home = () => {
 
     const handleQuery = (e: React.FormEvent<HTMLFormElement>): void => {
         e?.preventDefault();
-        navigate(`/pages/SearchResult?query=${encodeURIComponent(query)}&number=${number}`);
+        navigate(`/pages/Search?query=${encodeURIComponent(query)}&number=${number}`);
     }
 
     return (
@@ -38,6 +38,7 @@ const Home = () => {
                 <button className="searchBtn">Search</button>
             </form>
             </div>
+
         </div>
     )
 }

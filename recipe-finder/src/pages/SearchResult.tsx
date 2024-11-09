@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import useFetch from "../hooks/useFetch";
 import { useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
+import Loading from "../components/Loading";
+import Error from "../components/Error";
 
 interface ItemList {
     item: ItemInterface[],
@@ -15,7 +17,7 @@ const SearchResult = () => {
     const query = queryParams.get('query') || '';
     const number = queryParams.get('number') || 2;
 
-    const {data: itemData, loading, error: dataError} = useFetch(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${APIKEY}&query=${query}&number=${number}`);
+    const {data: itemData, loading, error} = useFetch(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${APIKEY}&query=${query}&number=${number}`);
     const [item, setItem] = useState<ItemInterface[]>([]);
 
     useEffect(() => {
@@ -26,6 +28,8 @@ const SearchResult = () => {
 
     return (
         <div className="searchResults">
+            {loading && <Loading />}
+            {error && <Error error={error} />}
             {item.map(food => 
                 <div className="foodContainer" key={food.id}>
                     <div className="titleContainer">

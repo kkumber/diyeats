@@ -1,5 +1,6 @@
-import { useState, useEffect } from "react"
-
+import { useState, useEffect } from "react";
+import Loading from "../components/Loading";
+import Error from "../components/ErrorPage";
 
 
 const useFetch = (url: string) => {
@@ -8,19 +9,20 @@ const useFetch = (url: string) => {
     const [error, setError] = useState<string | null>(null);
 
     useEffect(() => {
+        const controller = new AbortController();
+        const signal = controller.signal;
+
         const fetchData = async () => {
             setLoading(true);
             setError(null);
 
             try {
-                const response = await fetch(url);
+                const response = await fetch(url, {signal});
                 if (!response.ok) {
                     throw new Error(`Error: ${response.statusText}`);
                 }
                 const jsonData = await response.json();
                 setData(jsonData);
-
-
             } catch (error) {
                 setError((error as Error).message);
             } finally {
@@ -29,8 +31,14 @@ const useFetch = (url: string) => {
         }
 
         fetchData();
+
+        return () => {
+            controller.abort();
+        }
     }, [url])
 
+    {loading && <Loading />}
+    {error && <ErrorPage error={error} />}
     return { data, loading, error }
 }
 

@@ -16,7 +16,7 @@ interface MealData {
     readyInMinutes: number;
     instructions: string;
     image: string;
-    dishTypes: [];
+    dishTypes: string[];
     id: number;
     extendedIngredients: Ingredients[];
     analyzedInstructions: AnalyzedInstructions[];
@@ -70,8 +70,8 @@ const Meal = () => {
                 </div>
                 <div className="mealInfoContainer">
                     <div className="infoContainer">
-                        {mealRecipe?.dishTypes.map(type => 
-                            <p className="types">
+                        {mealRecipe?.dishTypes.map((type, index) => 
+                            <p className="types" key={index}>
                                 <span className="info">{ type }</span>
                             </p>
                         )}
@@ -96,7 +96,7 @@ const Meal = () => {
                 <div className="instructionsContainer">
                     <h2>Instructions</h2>
                     {instructions?.map((step, index) => 
-                        <ul className="stepsContainer">
+                        <ul className="stepsContainer" key={index}>
                             <li>{index + 1}. {step.step}</li>
                         </ul>
                     )}

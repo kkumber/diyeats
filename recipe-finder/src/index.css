@@ -17,6 +17,6 @@ img {
   height: 200px;
 }
 
-.ingredientContainer {
+.ingredientContainer, .foodContainer {
   cursor: pointer;
 }

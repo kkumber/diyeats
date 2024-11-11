@@ -16,7 +16,6 @@ export interface ItemInterface {
 }
 
 
-
 const Home = () => {
     const APIKEY = 'ae98638f897c4eb79d6f212f141affb8';
     const [query, setQuery] = useState<string>('');

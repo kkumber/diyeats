@@ -5,6 +5,7 @@ import { useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Loading from "../components/Loading"
 import ErrorPage from "../components/ErrorPage"
+import { useNavigate } from "react-router-dom";
 
 
 interface ItemList {
@@ -17,6 +18,7 @@ const Search = () => {
     const queryParams = new URLSearchParams(location.search);
     const query = queryParams.get('query') || '';
     const number = queryParams.get('number') || 1;
+    const navigate = useNavigate();
 
     const {data: itemData, loading, error} = useFetch(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${APIKEY}&query=${query}&number=${number}`);
     const [item, setItem] = useState<ItemInterface[]>([]);
@@ -27,13 +29,18 @@ const Search = () => {
         }
     }, [itemData]);
 
+    const handleRecipe = (id: number) => {
+        navigate(`/pages/Meal?id=${id}`)
+    }
+
+
     return (
         <div className="searchResults">
             {loading && <Loading />}
             {error && <ErrorPage error={error} />}
 
             {item.map(food => 
-                <div className="foodContainer" key={food.id}>
+                <div className="foodContainer" key={food.id} onClick={() => handleRecipe(food.id)}>
                     <div className="titleContainer">
                         <h1>{ food.title }</h1>
                     </div>

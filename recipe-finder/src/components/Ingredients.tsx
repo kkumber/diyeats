@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 export interface PopularIngredients {
     name: string;
     image: string;
+    id: number
 }
 
 const Ingredients = () => {
@@ -16,23 +17,28 @@ const Ingredients = () => {
     useEffect(() => {
         setIngredients([{
             name: 'Chicken',
-            image: '/images/chicken.jpg'
+            image: '/images/chicken.jpg',
+            id: 1
         },
         {
             name: 'Pork',
-            image: '/images/pork.jpg'
+            image: '/images/pork.jpg',
+            id: 2
         },
         {
             name: 'Beef',
-            image: '/images/beef.jpg'
+            image: '/images/beef.jpg',
+            id: 3
         },
         {
             name: 'Egg',
-            image: '/images/eggs.jpg'
+            image: '/images/eggs.jpg',
+            id: 4
         },
         {
             name: 'Salmon',
-            image: '/images/salmon.jpg'
+            image: '/images/salmon.jpg',
+            id: 5
         }]
     );
     }, [])
@@ -49,7 +55,7 @@ const Ingredients = () => {
             <div className="card">
             {
                 ingredients?.map(ingredient =>
-                    <div className="ingredientContainer" onClick={() => handleSearch(ingredient.name)}>
+                    <div className="ingredientContainer" key={ingredient.id} onClick={() => handleSearch(ingredient.name)}>
                         <div className="nameContainer">
                             <span className="ingredientName"> {ingredient.name} </span>
                         </div>

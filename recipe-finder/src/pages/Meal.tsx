@@ -76,16 +76,16 @@ const Meal = () => {
                             </p>
                         )}
                     </div>
-
-                <div className="mealSummaryContainer">
-                    {mealRecipe && <span className="mealSummary" dangerouslySetInnerHTML={{__html: mealRecipe.summary}}></span>}
-                </div>
                     <div className="infoContainer">
                         <span className="info">Ready in {mealRecipe?.readyInMinutes} minutes</span>
                     </div>
                     <div className="infoContainer">
                         <span className="info">{mealRecipe?.servings} Servings</span>
                     </div>
+                </div>
+
+                <div className="mealSummaryContainer">
+                    {mealRecipe && <span className="mealSummary" dangerouslySetInnerHTML={{__html: mealRecipe.summary}}></span>}
                 </div>
 
                 <div className="ingredientListContainer">

@@ -94,11 +94,12 @@ const Meal = () => {
 
                 <div className="instructionsContainer">
                     <h2>Instructions</h2>
-                    {instructions?.map((step, index) => 
+                    {/* {instructions?.map((step, index) => 
                         <ul className="stepsContainer" key={index}>
                             <li>{index + 1}. {step.step}</li>
                         </ul>
-                    )}
+                    )} */}{mealRecipe && <div className="instructions" dangerouslySetInnerHTML={{ __html: mealRecipe!.instructions} }></div>
+}
                 </div>
         </div>
      );

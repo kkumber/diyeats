@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import Loading from "../components/Loading"
 import ErrorPage from "../components/ErrorPage"
 import { useNavigate } from "react-router-dom";
+import Favorites from "./Favorites";
 
 
 interface ItemList {
@@ -19,20 +20,32 @@ const Search = () => {
     const query = queryParams.get('query') || '';
     const number = queryParams.get('number') || 1;
     const navigate = useNavigate();
-
     const {data: itemData, loading, error} = useFetch(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${APIKEY}&query=${query}&number=${number}`);
     const [item, setItem] = useState<ItemInterface[]>([]);
+    const [isFavorite, setIsFavorite] = useState<boolean>(false);
+    const [favoriteList, setFavoriteList] = useState<[]>();
 
     useEffect(() => {
         if (itemData && itemData.results) {
             setItem(itemData.results);
         }
+        console.log(itemData);
     }, [itemData]);
 
     const handleRecipe = (id: number) => {
         navigate(`/pages/Meal?id=${id}`)
     }
 
+    const handleFavorites = () => {
+        setIsFavorite(true);
+    }
+
+    useEffect(() => {
+        if (isFavorite) {
+            // possibly get by ID
+            const updatedList = `https://api.spoonacular.com/recipes/complexSearch?apiKey=${APIKEY}&query=${query}&number=1`
+        }
+    }, [isFavorite])
 
     return (
         <div className="searchResults">
@@ -47,6 +60,7 @@ const Search = () => {
                     <div className="imageContainer">
                         <img src={food.image} alt="Food Image" />
                     </div>
+                    <button className="addBtn" onClick={() => handleFavorites}>Add to favorites</button>
                 </div>
             )}
         </div>

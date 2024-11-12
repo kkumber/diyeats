@@ -13,6 +13,7 @@ interface ItemList {
     item: ItemInterface[],
 }
 
+
 const Search = () => {
     const APIKEY = 'ae98638f897c4eb79d6f212f141affb8';
     const location = useLocation();
@@ -23,7 +24,7 @@ const Search = () => {
     const {data: itemData, loading, error} = useFetch(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${APIKEY}&query=${query}&number=${number}`);
     const [item, setItem] = useState<ItemInterface[]>([]);
     const [isFavorite, setIsFavorite] = useState<boolean>(false);
-    const [favoriteList, setFavoriteList] = useState<[]>();
+    const [favoriteList, setFavoriteList] = useState<number[]>([]);
 
     useEffect(() => {
         if (itemData && itemData.results) {
@@ -36,16 +37,13 @@ const Search = () => {
         navigate(`/pages/Meal?id=${id}`)
     }
 
-    const handleFavorites = () => {
-        setIsFavorite(true);
+    const handleFavorites = (id: number) => {
+        setIsFavorite((prevList) => !prevList);
+        if (isFavorite) {
+        setFavoriteList((prevList) => [...prevList, id]);
+        }
     }
 
-    useEffect(() => {
-        if (isFavorite) {
-            // possibly get by ID
-            const updatedList = `https://api.spoonacular.com/recipes/complexSearch?apiKey=${APIKEY}&query=${query}&number=1`
-        }
-    }, [isFavorite])
 
     return (
         <div className="searchResults">
@@ -60,7 +58,7 @@ const Search = () => {
                     <div className="imageContainer">
                         <img src={food.image} alt="Food Image" />
                     </div>
-                    <button className="addBtn" onClick={() => handleFavorites}>Add to favorites</button>
+                    <button className="addBtn" onClick={() => handleFavorites(food.id)}>Add to favorites</button>
                 </div>
             )}
         </div>

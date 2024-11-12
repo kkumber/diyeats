@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import useFetch from "../hooks/useFetch";
 import { useLocation } from "react-router-dom";
-import { Console } from "console";
 
 
 interface Ingredients {
@@ -77,17 +76,17 @@ const Meal = () => {
                         )}
                     </div>
                     <div className="infoContainer">
-                        <span className="info">{mealRecipe?.readyInMinutes}</span>
+                        <span className="info">Ready in {mealRecipe?.readyInMinutes} minutes</span>
                     </div>
                     <div className="infoContainer">
-                        <span className="info">{mealRecipe?.servings}</span>
+                        <span className="info">{mealRecipe?.servings} Servings</span>
                     </div>
                 </div>
 
                 <div className="ingredientListContainer">
                     {mealRecipe?.extendedIngredients.map(ingredient => 
                         <div className="ingredientContainer" key={ingredient.id}>
-                            <img src={ingredient.image} alt="" className="ingredientImageContainer" />
+                            <img src={`https://spoonacular.com/cdn/ingredients_250x250/${ingredient.image}`} alt="" className="ingredientImageContainer" />
                             <p className="ingredientName">{ingredient.original}</p>
                         </div>
                     )}

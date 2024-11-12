@@ -7,6 +7,13 @@ import { useState, useEffect } from "react";
 
 const Favorites = () => {
     const [favorites, setFavorites] = useState();
+    useEffect(() => {
+        const favoriteList = localStorage.getItem('favorites');
+        if (favoriteList) {
+            setFavorites(JSON.parse(favoriteList));
+        }
+        console.log(favoriteList);
+    }, [])
 
     return ( 
     <div className="favoritesContainer">

@@ -7,11 +7,9 @@ import Loading from "../components/Loading"
 import ErrorPage from "../components/ErrorPage"
 import { useNavigate } from "react-router-dom";
 import Favorites from "./Favorites";
+import useLocalStorage from "../hooks/useLocalStorage";
+import useUpdateLocalStorage from "../hooks/useUpdateLocalStorage";
 
-
-interface ItemList {
-    item: ItemInterface[],
-}
 
 
 const Search = () => {
@@ -23,11 +21,12 @@ const Search = () => {
     const query = queryParams.get('query') || '';
     const number = queryParams.get('number') || 1;
     const navigate = useNavigate();
-
     // 
     const {data: itemData, loading, error} = useFetch(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${APIKEY}&query=${query}&number=${number}`);
     const [item, setItem] = useState<ItemInterface[]>([]);
-    const [favoriteList, setFavoriteList] = useState<ItemInterface[]>([]);
+    const [favoriteList, setFavoriteList] = useState<ItemInterface>({id: 94353452345, title: 'placeholder', image: '/images/placeholder'});
+    const {list} = useUpdateLocalStorage('favorites', favoriteList);
+
 
     useEffect(() => {
         if (itemData && itemData.results) {
@@ -39,17 +38,11 @@ const Search = () => {
         navigate(`/pages/Meal?id=${id}`)
     }
 
-    const handleFavorites = () => {
-        if (itemData) {
-        setFavoriteList((prevList) => [...prevList, itemData.results]);
-        }
-    }
-
-    useEffect(() => {
+    const handleFavorites = (newItem: ItemInterface) => {
+        setFavoriteList(newItem);
         localStorage.setItem('favorites', JSON.stringify(favoriteList));
         console.log(favoriteList);
-    }, [favoriteList])
-
+    }
 
     return (
         <div className="searchResults">
@@ -64,7 +57,7 @@ const Search = () => {
                     <div className="imageContainer" onClick={() => handleRecipe(food.id)}>
                         <img src={food.image} alt="Food Image" />
                     </div>
-                    <button className="addBtn" onClick={() => handleFavorites()}>Add to favorites</button>
+                    <button className="addBtn" onClick={() => handleFavorites(food)}>Add to favorites</button>
                 </div>
             )}
         </div>

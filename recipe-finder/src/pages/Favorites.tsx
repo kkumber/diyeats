@@ -1,4 +1,6 @@
 import { useState, useEffect } from "react";
+import useUpdateLocalStorage from "../hooks/useUpdateLocalStorage";
+
 
 
 // Favorites should be its own page and be put inside a navbar
@@ -6,15 +8,11 @@ import { useState, useEffect } from "react";
 
 
 const Favorites = () => {
-    const [favorites, setFavorites] = useState();
-    useEffect(() => {
-        const favoriteList = localStorage.getItem('favorites');
-        if (favoriteList) {
-            setFavorites(JSON.parse(favoriteList));
-        }
-        console.log(favoriteList);
-    }, [])
+  //  const {list} = useUpdateLocalStorage('favorites', );
 
+    // useEffect (() => {
+    //     console.log(list);
+    // }, [list])
     return ( 
     <div className="favoritesContainer">
         <h1>Hi</h1>

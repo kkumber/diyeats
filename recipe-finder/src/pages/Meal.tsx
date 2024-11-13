@@ -83,7 +83,7 @@ const Meal = () => {
                         <span className="info">{mealRecipe?.servings} Servings</span>
                     </div>
                 </div>
-
+                
                 <div className="mealSummaryContainer">
                     {mealRecipe && <span className="mealSummary" dangerouslySetInnerHTML={{__html: mealRecipe.summary}}></span>}
                 </div>

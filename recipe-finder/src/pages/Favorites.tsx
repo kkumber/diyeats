@@ -10,7 +10,7 @@ const Favorites = () => {
 
     return ( 
     <div className="favoritesContainer">
-        
+        <h1>Hi</h1>
     </div> );
 }
  

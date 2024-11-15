@@ -1,25 +1,30 @@
 import { useEffect, useState } from "react";
 import { ItemInterface } from "../pages/Home";
+import useLocalStorage from "./useLocalStorage";
 
-const useUpdateLocalStorage = (key: string, item: ItemInterface | null) => {
-    // Safely retrieve and parse data from localStorage
-    const getData = localStorage.getItem(key);
-    const prevData = getData ? JSON.parse(getData) : []; // Fallback to an empty array if no data
-
-    const [list, setList] = useState<ItemInterface[]>(prevData);
+const useUpdateLocalStorage = (key: string) => {
+    // Retrieve and parse data from localStorage at initialization
+    const prevData = useLocalStorage(key);
+    const initialData = prevData || [];
+    
+    const [list, setList] = useState<ItemInterface[]>(initialData);
 
     useEffect(() => {
-        if (item) {
-            // Update the state and localStorage
-            setList((prevList) => {
-                const updatedList = [...prevList, item];
-                localStorage.setItem(key, JSON.stringify(updatedList));
-                return updatedList;
-            });
-        }
-    }, [item, key]); // Depend on item and key only
+        // Update localStorage whenever list changes
+        localStorage.setItem(key, JSON.stringify(list));
+    }, [list, key]);
 
-    return { list };
+    const addItem = (item: ItemInterface) => {
+        setList((prevList) => {
+            // Avoid duplicates by checking if the item already exists
+            if (prevList.some(existingItem => existingItem.id === item.id)) {
+                return prevList;
+            }
+            return [...prevList, item];
+        });
+    };
+
+    return { list, addItem };
 };
 
 export default useUpdateLocalStorage;

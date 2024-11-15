@@ -24,8 +24,9 @@ const Search = () => {
     // 
     const {data: itemData, loading, error} = useFetch(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${APIKEY}&query=${query}&number=${number}`);
     const [item, setItem] = useState<ItemInterface[]>([]);
-    const [favoriteList, setFavoriteList] = useState<ItemInterface>({id: 94353452345, title: 'placeholder', image: '/images/placeholder'});
-    const {list} = useUpdateLocalStorage('favorites', favoriteList);
+    const prevData = useLocalStorage('favorites');
+    const [favoriteList, setFavoriteList] = useState<ItemInterface[]>(prevData);
+  //  const {list} = useUpdateLocalStorage('favorites');
 
 
     useEffect(() => {
@@ -39,10 +40,10 @@ const Search = () => {
     }
 
     const handleFavorites = (newItem: ItemInterface) => {
-        setFavoriteList(newItem);
-        localStorage.setItem('favorites', JSON.stringify(favoriteList));
-        console.log(favoriteList);
+        localStorage.setItem('favorites', JSON.stringify([...favoriteList, newItem]));
+        console.log(newItem);
     }
+
 
     return (
         <div className="searchResults">

@@ -31,7 +31,7 @@ const NutritionWidget = ({foodId, APIKEY}: Widget) => {
         fetchWidget();
     }, [foodId])
     
-    if (!imageSrc) {
+    if (loading) {
         <Loading />
     }
 

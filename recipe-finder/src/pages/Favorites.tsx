@@ -5,16 +5,14 @@ import RenderFoods from "../components/RenderFoods";
 
 
 
-const Favorites = () => {
-    const list = useLocalStorage('favorites');
 
-    useEffect (() => {
-        console.log(list);
-    }, [list])
+const Favorites = () => {
+    const item = useLocalStorage('favorites');
+
     return ( 
     <div className="favoritesContainer">
         <h1>Your Favorite Recipes</h1>
-        
+        {/* <RenderFoods item={item} handleFavorites={h}/> */}
     </div> );
 }
  

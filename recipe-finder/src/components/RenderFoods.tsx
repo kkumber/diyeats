@@ -1,12 +1,17 @@
 import { ItemInterface } from "../pages/Home";
+import useNavigateToRecipe from "../hooks/useNavigateToRecipe";
+import useFavorites from "../hooks/useFavorites";
+import FavoritesButton from "./FavoritesButton";
+
 
 interface Foods {
     item: ItemInterface[];
-    handleRecipe: (id: number) => void;
-    handleFavorites: (newItem: ItemInterface) => void;
 }
 
-const RenderFoods = ({item, handleRecipe, handleFavorites}: Foods) => {
+const RenderFoods = ({item}: Foods) => {
+ 
+    const navigateToRecipe = useNavigateToRecipe();
+
   return (
     <div className="foodsList">
         {item.map(food => 
@@ -14,10 +19,10 @@ const RenderFoods = ({item, handleRecipe, handleFavorites}: Foods) => {
                     <div className="titleContainer">
                         <h1>{ food.title }</h1>
                     </div>
-                    <div className="imageContainer" onClick={() => handleRecipe(food.id)}>
+                    <div className="imageContainer" onClick={() => navigateToRecipe(food.id)}>
                         <img src={food.image} alt="Food Image" />
                     </div>
-                    <button className="addBtn" onClick={() => handleFavorites(food)}>Add to favorites</button>
+                    <FavoritesButton food={food} />
                 </div>
             )}
     </div>

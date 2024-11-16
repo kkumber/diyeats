@@ -1,8 +1,11 @@
 import { useNavigate } from "react-router-dom";
 
-const handleRecipe = (id: number) => {
+const useNavigateToRecipe = () => {
     const navigate = useNavigate();
+
+    return (id: number) => {
     navigate(`/pages/Meal?id=${id}`);
+    }
 }
 
-export default handleRecipe;
+export default useNavigateToRecipe;

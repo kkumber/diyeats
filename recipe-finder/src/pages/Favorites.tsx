@@ -12,7 +12,7 @@ const Favorites = () => {
     return ( 
     <div className="favoritesContainer">
         <h1>Your Favorite Recipes</h1>
-        {/* <RenderFoods item={item} handleFavorites={h}/> */}
+        {<RenderFoods item={item} /> }
     </div> );
 }
  

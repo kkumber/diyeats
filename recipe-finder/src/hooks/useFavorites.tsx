@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 const useFavorites = () => {
     const [favorites, setFavorites] = useState<ItemInterface[]>(useLocalStorage('favorites'));
 
+
     const isFavorite = (newItem: ItemInterface) => {
         const found = favorites.some(item => item.id === newItem.id);
         return found;

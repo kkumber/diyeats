@@ -11,7 +11,7 @@ const FavoritesButton = ({food}: Food) => {
     const {favorites, isFavorite, addToFavorites} = useFavorites();
 
     const handleFavorites = (newItem : ItemInterface) => {
-        if (isFavorite(newItem)) {
+        if (!isFavorite(newItem)) {
             addToFavorites(newItem);
             alert('Added to Favorites!');
         } else {
@@ -22,8 +22,7 @@ const FavoritesButton = ({food}: Food) => {
     return ( 
         <>
         <button className="addBtn" onClick={() => handleFavorites(food)}>
-            {isFavorite(food) ? <span>Remove From Favorites</span> : <span>Add to Favorites</span>
-}
+            {isFavorite(food) ? <span>Remove From Favorites</span> : <span>Add to Favorites</span>}
         </button>
         </>
      );

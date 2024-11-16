@@ -22,9 +22,6 @@ const Search = () => {
     // 
     const {data: itemData, loading, error} = useFetch(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${APIKEY}&query=${query}&number=${number}`);
     const [item, setItem] = useState<ItemInterface[]>([]);
-    const prevData = useLocalStorage('favorites');
-    const [favoriteList, setFavoriteList] = useState<ItemInterface[]>(prevData);
-
 
 
     useEffect(() => {

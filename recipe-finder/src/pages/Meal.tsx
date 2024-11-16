@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import useFetch from "../hooks/useFetch";
 import { useLocation } from "react-router-dom";
+import Loading from "../components/Loading";
+import ErrorPage from "../components/ErrorPage";
 
 
 interface Ingredients {
@@ -47,9 +49,9 @@ const Meal = () => {
             if (allElements) {
                 setMealRecipe(allElements);
             }
-        console.log(data);
         }
     }, [data])
+
 
     useEffect(() => {
         if (mealRecipe?.analyzedInstructions) {
@@ -88,10 +90,14 @@ const Meal = () => {
                     {mealRecipe && <span className="mealSummary" dangerouslySetInnerHTML={{__html: mealRecipe.summary}}></span>}
                 </div>
 
+                {/* <div className="nutritionFactContainer">
+                    <img src={`https://api.spoonacular.com/food/products/${foodId}/nutritionWidget.png`} alt="Nutrition Facts" />
+                </div> */}
+
                 <div className="ingredientListContainer">
                     {mealRecipe?.extendedIngredients.map(ingredient => 
                         <div className="ingredientContainer" key={ingredient.id}>
-                            <img src={`https://spoonacular.com/cdn/ingredients_250x250/${ingredient.image}`} alt="" className="ingredientImageContainer" />
+                            <img src={`https://spoonacular.com/cdn/ingredients_250x250/${ingredient.image}`} alt="ingredient" className="ingredientImageContainer" />
                             <p className="ingredientName">{ingredient.original}</p>
                         </div>
                     )}
@@ -105,8 +111,6 @@ const Meal = () => {
                         </ul>
                     )}
                     
-                    {/* {mealRecipe && <div className="instructions" dangerouslySetInnerHTML={{ __html: mealRecipe!.instructions} }></div>
-} */}
                 </div>
         </div>
      );

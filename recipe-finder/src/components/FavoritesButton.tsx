@@ -8,13 +8,14 @@ interface Food {
 }
 
 const FavoritesButton = ({food}: Food) => {
-    const {favorites, isFavorite, addToFavorites} = useFavorites();
+    const {favorites, isFavorite, addToFavorites, removeToFavorites} = useFavorites();
 
     const handleFavorites = (newItem : ItemInterface) => {
         if (!isFavorite(newItem)) {
             addToFavorites(newItem);
             alert('Added to Favorites!');
         } else {
+            removeToFavorites(newItem);
             alert("Removed from Favorites!");
         }
     }

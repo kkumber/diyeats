@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import useUpdateLocalStorage from "../hooks/useUpdateLocalStorage";
 import useLocalStorage from "../hooks/useLocalStorage";
-
+import RenderFoods from "../components/RenderFoods";
 
 
 
@@ -13,7 +13,8 @@ const Favorites = () => {
     }, [list])
     return ( 
     <div className="favoritesContainer">
-        <h1>Hi</h1>
+        <h1>Your Favorite Recipes</h1>
+        
     </div> );
 }
  

@@ -1,5 +1,4 @@
 import { ItemInterface } from "./Home";
-import { Link } from "react-router-dom";
 import useFetch from "../hooks/useFetch";
 import { useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
@@ -8,8 +7,7 @@ import ErrorPage from "../components/ErrorPage"
 import { useNavigate } from "react-router-dom";
 import Favorites from "./Favorites";
 import useLocalStorage from "../hooks/useLocalStorage";
-import useUpdateLocalStorage from "../hooks/useUpdateLocalStorage";
-
+import RenderFoods from "../components/RenderFoods";
 
 
 const Search = () => {
@@ -50,7 +48,9 @@ const Search = () => {
             {loading && <Loading />}
             {error && <ErrorPage error={error} />}
 
-            {item.map(food => 
+            {item && <RenderFoods item={item} handleRecipe={handleRecipe} handleFavorites={handleFavorites} />}
+
+            {/* {item.map(food => 
                 <div className="foodContainer" key={food.id}>
                     <div className="titleContainer">
                         <h1>{ food.title }</h1>
@@ -60,7 +60,7 @@ const Search = () => {
                     </div>
                     <button className="addBtn" onClick={() => handleFavorites(food)}>Add to favorites</button>
                 </div>
-            )}
+            )} */}
         </div>
     );
 }

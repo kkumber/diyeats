@@ -3,6 +3,7 @@ import useFetch from "../hooks/useFetch";
 import { useLocation } from "react-router-dom";
 import Loading from "../components/Loading";
 import ErrorPage from "../components/ErrorPage";
+import NutritionWidget from "../components/NutritionWidget";
 
 
 interface Ingredients {
@@ -59,6 +60,7 @@ const Meal = () => {
         }
     }, [mealRecipe])
 
+
     return ( 
         <div className="foodRecipeContainer">
 
@@ -90,9 +92,9 @@ const Meal = () => {
                     {mealRecipe && <span className="mealSummary" dangerouslySetInnerHTML={{__html: mealRecipe.summary}}></span>}
                 </div>
 
-                {/* <div className="nutritionFactContainer">
-                    <img src={`https://api.spoonacular.com/food/products/${foodId}/nutritionWidget.png`} alt="Nutrition Facts" />
-                </div> */}
+                 <div className="nutritionFactContainer">
+                    <NutritionWidget foodId={foodId} APIKEY={APIKEY} />
+                </div> 
 
                 <div className="ingredientListContainer">
                     {mealRecipe?.extendedIngredients.map(ingredient => 

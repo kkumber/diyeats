@@ -6,10 +6,11 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        "milky-white": "DDC1A6",
-        "milky-brown": "EFE9E0",
-        "dark-brown": "CBA37B",
-        "light-brown": "C08A5F"
+        "background": "#DDC1A6",
+        "milky-white": "#EFE9E0",
+        "milky-brown": "#CBA37B",
+        "dark-brown": "#955639",
+        "light-brown": "#C08A5F"
       }
     },
   },

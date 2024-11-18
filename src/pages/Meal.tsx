@@ -109,8 +109,7 @@ const Meal = () => {
                         <ul className="stepsContainer" key={index}>
                             <li>{index + 1}. {step.step}</li>
                         </ul>
-                    )}
-                    
+                    )}    
                 </div>
         </div>
      );

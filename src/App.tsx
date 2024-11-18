@@ -7,6 +7,7 @@ import Meal from './pages/Meal';
 import Ingredients from './components/Ingredients';
 import Navbar from './pages/Navbar';
 import Favorites from './pages/Favorites';
+import Header from './components/Header';
 
 function App() {
   return (
@@ -14,9 +15,9 @@ function App() {
     <div className="App">
       <main>
       <Navbar />
-      <Home />
+      <Header />
       <Routes>
-        <Route path='/' element={<Ingredients />} />
+        <Route path='/' element={<Home />} />
         <Route path='/pages/Search' element={<Search />}/>
         <Route path='/pages/Meal' element={<Meal />}/>
         <Route path='/pages/Favorites' element={<Favorites />} />

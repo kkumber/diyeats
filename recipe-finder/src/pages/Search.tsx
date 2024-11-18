@@ -4,11 +4,7 @@ import { useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Loading from "../components/Loading"
 import ErrorPage from "../components/ErrorPage"
-import { useNavigate } from "react-router-dom";
-import Favorites from "./Favorites";
-import useLocalStorage from "../hooks/useLocalStorage";
 import RenderFoods from "../components/RenderFoods";
-import handleRecipe from "../hooks/useNavigateToRecipe";
 
 
 const Search = () => {

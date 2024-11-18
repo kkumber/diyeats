@@ -1,8 +1,6 @@
 import { useEffect, useState } from "react";
 import useFetch from "../hooks/useFetch";
 import { useLocation } from "react-router-dom";
-import Loading from "../components/Loading";
-import ErrorPage from "../components/ErrorPage";
 import NutritionWidget from "../components/NutritionWidget";
 
 

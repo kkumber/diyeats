@@ -15,7 +15,7 @@ const NutritionWidget = ({foodId, APIKEY}: Widget) => {
     useEffect(() => {
         const fetchWidget = async () => {
             try {
-                const response = await fetch(`https://api.spoonacular.com/food/products/${foodId}/nutritionWidget.png?apiKey=${APIKEY}`)
+                const response = await fetch(`https://api.spoonacular.com/food/recipes/${foodId}/nutritionWidget.png?apiKey=${APIKEY}`)
                 if (!response.ok) {
                     throw new Error(`Error: Failed to fetch!`);
                 }

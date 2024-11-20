@@ -4,7 +4,7 @@ const useNavigateToRecipe = () => {
     const navigate = useNavigate();
 
     return (id: number) => {
-    navigate(`localhost:3000/pages/Meal?id=${id}`);
+    navigate(`/pages/Meal?id=${id}`);
     }
 }
 

@@ -32,7 +32,7 @@ const Header = () => {
           </div>
         <div className="flex items-start">
           <button className="rounded-2xl bg-milky-white px-4 py-1 mt-3 text-milky-brown items-center
-           sm:px-6
+          sm:px-6
           ">Log in</button>
         </div>
       </div>

@@ -13,14 +13,13 @@ export interface ItemInterface {
     image: string;
 }
 
+
 const Home = () => {
 
-
     return (
-        <main className="home">
+        <div className="home">
             <Ingredients />
-            
-        </main>
+        </div>
     )
 }
 

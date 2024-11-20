@@ -10,8 +10,10 @@ const Favorites = () => {
     const item = useLocalStorage('favorites');
 
     return ( 
-    <div className="favoritesContainer">
-        <h1>Your Favorite Recipes</h1>
+    <div className="mx-4">
+            <div className="mt-4 mb-2 sm:mt-12 sm:mb-4">
+               <span className="font-montserrat font-bold text-xl sm:text-3xl">Favorites</span>
+            </div>
         {<RenderFoods item={item} /> }
     </div> );
 }

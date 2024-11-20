@@ -61,15 +61,15 @@ const Ingredients = () => {
             {
                 ingredients?.map(ingredient =>
                     // Card Container
-                    <div className="bg-light-brown p-4 rounded-xl" 
+                    <div className="bg-light-brown p-4 rounded-xl cursor-pointer" 
                     key={ingredient.id} onClick={() => handleSearch(ingredient.name)}>
                         {/* Top Part */}
-                        <div className="w-full h-3/4">
-                            <img src={ingredient.image} alt="ingredient image" className="rounded-xl mb-2 w-full h-full"/>
+                        <div className="w-full h-3/4 mb-5">
+                            <img src={ingredient.image} alt="ingredient image" className="rounded-xl w-full h-full"/>
                         </div>
                         
                         {/* Bottom Part */}
-                        <div className="flex justify-between items-center h-1/4">
+                        <div className="flex justify-between items-center">
                             <div className="nameContainer">
                                 <span className="font-semibold text-lg sm:text-xl"> {ingredient.name} </span>
                             </div>

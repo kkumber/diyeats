@@ -48,19 +48,34 @@ const Ingredients = () => {
     };
 
     return ( 
-        <div className="ingredientsContainer">
-            <div className="titleContainer">
-               <span className="title">Popular Ingredients</span>
+        // Main Container
+        <div className="mx-4">
+            <div className="mt-4 mb-2 sm:mt-12 sm:mb-4">
+               <span className="font-montserrat font-bold text-xl sm:text-3xl">Popular Ingredients</span>
             </div>
-            <div className="card">
+
+
+         {/* Cards Container */}
+            <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+
             {
                 ingredients?.map(ingredient =>
-                    <div className="ingredientContainer" key={ingredient.id} onClick={() => handleSearch(ingredient.name)}>
-                        <div className="nameContainer">
-                            <span className="ingredientName"> {ingredient.name} </span>
+                    // Card Container
+                    <div className="bg-light-brown p-4 rounded-xl" 
+                    key={ingredient.id} onClick={() => handleSearch(ingredient.name)}>
+                        {/* Top Part */}
+                        <div className="w-full h-3/4">
+                            <img src={ingredient.image} alt="ingredient image" className="rounded-xl mb-2 w-full h-full"/>
                         </div>
-                        <div className="imageContainer">
-                            <img src={ingredient.image} alt="ingredient image" />
+                        
+                        {/* Bottom Part */}
+                        <div className="flex justify-between items-center h-1/4">
+                            <div className="nameContainer">
+                                <span className="font-semibold text-lg sm:text-xl"> {ingredient.name} </span>
+                            </div>
+                            <div className="typeContainer">
+                                <span className="bg-dark-brown rounded-full px-4 py-2 text-white text-sm">Main Ingredient</span>
+                            </div>
                         </div>
                     </div>
                 )

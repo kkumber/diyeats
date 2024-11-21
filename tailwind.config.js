@@ -6,7 +6,7 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        "background": "#DDC1A6",
+        "background": "#F5F5DC",
         "milky-white": "#EFE9E0",
         "milky-brown": "#CBA37B",
         "dark-brown": "#955639",
@@ -16,7 +16,9 @@ module.exports = {
         "header-bg" : "url('/public/images/headerbg.png')"
       },
       fontFamily: {
-        montserrat: ["Montserrat"]
+        montserrat: ["Montserrat"],
+        cormorant: ["Cormorant Garamond"],
+        roboto: ["Roboto"]
       }
     },
   },

@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import useFetch from "../hooks/useFetch";
 import { useLocation } from "react-router-dom";
 import NutritionWidget from "../components/NutritionWidget";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBowlFood, faStopwatch, faUtensils } from "@fortawesome/free-solid-svg-icons";
 
 
 interface Ingredients {
@@ -59,59 +61,99 @@ const Meal = () => {
     }, [mealRecipe])
 
 
-    return ( 
-        <div className="foodRecipeContainer">
+    return (
+        <div className="parentContainer">
 
+        <div className="mx-4 grid md:grid-cols-2 gap-8">
+            {/* Left Side */}
+            <div className="leftSide">
                 <div className="mealContainer">
-                    <div className="title">
-                        <span>{ mealRecipe?.title }</span>
+                    {/* Title */}
+                        <div className="my-4">
+                            <span className="text-2xl sm:text-4xl font-montserrat font-bold">{ mealRecipe?.title }</span>
+                        </div>
+
+                        {/* Meal Summary */}
+                        <div className="my-4">
+                            {mealRecipe && <span className="mealSummary" dangerouslySetInnerHTML={{__html: mealRecipe.summary}}></span>}
+                        </div>
+
+                        {/* Meal Image */}
+                        <div className="bg-light-brown p-4 rounded-xl">
+                            <img src={mealRecipe?.image} alt="Meal Image" className="w-full rounded-lg" />
+                        </div>
                     </div>
-                    <div className="mealImageContainer">
-                        <img src={mealRecipe?.image} alt="" />
+
+                {/* Meal Infos */}
+                <div className="mealInfoContainer my-8">
+                    <div className="flex flex-col gap-y-4">
+                        <div className="flex items-center justify-start gap-x-2">
+                        <div className="w-4 h-4 rounded-full bg-light-brown p-4 flex items-center justify-center">
+                                <FontAwesomeIcon icon={faStopwatch} />
+                            </div>
+                            <span className="info">Ready in {mealRecipe?.readyInMinutes} minutes</span>
+                        </div>
+                        <div className="flex items-center justify-start gap-x-2">
+                        <div className="w-4 h-4 rounded-full bg-light-brown p-4 flex items-center justify-center">
+                                <FontAwesomeIcon icon={faUtensils} />
+                            </div>
+                            <span className="info">{mealRecipe?.servings} Servings</span>
+                        </div>
+                        <div className="flex items-center justify-start gap-x-2">
+                            <div className="w-4 h-4 rounded-full bg-light-brown p-4 flex items-center justify-center">
+                                <FontAwesomeIcon icon={faBowlFood} />
+                            </div>
+                            {mealRecipe?.dishTypes.map((type, index) => 
+                                <p className="types" key={index}>
+                                    <span className="info">{ type }</span>
+                                </p>
+                            )}
+                        </div>
                     </div>
-                </div>
-                <div className="mealInfoContainer">
-                    <div className="infoContainer">
-                        {mealRecipe?.dishTypes.map((type, index) => 
-                            <p className="types" key={index}>
-                                <span className="info">{ type }</span>
-                            </p>
-                        )}
-                    </div>
-                    <div className="infoContainer">
-                        <span className="info">Ready in {mealRecipe?.readyInMinutes} minutes</span>
-                    </div>
-                    <div className="infoContainer">
-                        <span className="info">{mealRecipe?.servings} Servings</span>
-                    </div>
-                </div>
-                
-                <div className="mealSummaryContainer">
-                    {mealRecipe && <span className="mealSummary" dangerouslySetInnerHTML={{__html: mealRecipe.summary}}></span>}
                 </div>
 
-                 <div className="nutritionFactContainer">
+
+                {/* Nutrition Fact */}
+                <div className="my-8">
+                    <h1 className="font-montserrat text-2xl sm:text-4xl font-bold">Nutrition Facts</h1>
                     <NutritionWidget foodId={foodId} APIKEY={APIKEY} />
                 </div> 
-
-                <div className="ingredientListContainer">
-                    {mealRecipe?.extendedIngredients.map(ingredient => 
-                        <div className="ingredientContainer" key={ingredient.id}>
-                            <img src={`https://spoonacular.com/cdn/ingredients_250x250/${ingredient.image}`} alt="ingredient" className="ingredientImageContainer" />
-                            <p className="ingredientName">{ingredient.original}</p>
-                        </div>
-                    )}
+                
+            </div>
+                
+            {/* Right Side */}
+            <div className="">
+                <div className="my-4 bg-dark-brown px-4 py-2 text-center rounded-xl">
+                    <h1 className="font-montserrat text-2xl sm:text-4xl font-bold">Ingredients</h1>
                 </div>
-
-                <div className="instructionsContainer">
-                    <h2>Instructions</h2>
+                {/* Ingredients List */}
+                <div className="ingredientListContainer gap-4 grid md:grid-cols-2">
+                        {mealRecipe?.extendedIngredients.map(ingredient => 
+                            <div className="bg-light-brown p-4 rounded-xl justify-center items-center" key={ingredient.id}>
+                                <div className="w-full mb-5 md:h-32 lg:h-52">
+                                    <img src={`https://spoonacular.com/cdn/ingredients_250x250/${ingredient.image}`} alt="ingredient" 
+                                    className="rounded-xl w-full h-full" />
+                                </div>
+                                <div className="flex justify-center text-center">
+                                    <p className="bg-dark-brown rounded-full px-4 py-2 text-white text-sm">{ingredient.original}</p>
+                                </div>
+                            </div>
+                        )}
+                    </div>
+            </div>
+         </div>
+                {/* Instructions */}
+                <div className="my-8 mx-4">
+                    <div className="my-4">
+                        <h1 className="font-montserrat text-2xl sm:text-4xl font-bold">Instructions</h1>
+                    </div>
                     {instructions?.map((step, index) => 
                         <ul className="stepsContainer" key={index}>
                             <li>{index + 1}. {step.step}</li>
                         </ul>
                     )}    
                 </div>
-        </div>
+    </div>
      );
 }
  

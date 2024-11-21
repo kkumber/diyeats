@@ -3,7 +3,7 @@ import Loading from "./Loading";
 
 interface Widget {
     foodId: string | null;
-    APIKEY: string
+    APIKEY: string | undefined
 }
 
 const NutritionWidget = ({foodId, APIKEY}: Widget) => {

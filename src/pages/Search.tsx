@@ -9,7 +9,7 @@ import RenderFoods from "../components/RenderFoods";
 
 const Search = () => {
 
-    const APIKEY = 'ae98638f897c4eb79d6f212f141affb8';
+    const APIKEY = process.env.REACT_APP_API_KEY;
     const location = useLocation();
     const queryParams = new URLSearchParams(location.search);
     const query = queryParams.get('query') || '';

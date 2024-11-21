@@ -8,7 +8,7 @@ import useHeadline from "../hooks/useHeadline";
 
 
 const Header = () => {
-    const APIKEY = 'ae98638f897c4eb79d6f212f141affb8';
+    const APIKEY = process.env.REACT_APP_API_KEY;
     const [query, setQuery] = useState<string>('');
     const [number, setNumber] = useState<number>(1);
     const navigate = useNavigate();

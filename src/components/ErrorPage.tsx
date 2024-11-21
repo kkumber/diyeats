@@ -5,7 +5,7 @@ export interface ErrorValue {
 const ErrorPage = ({error}: ErrorValue) => {
   return (
     <div className="errorContainer">
-        <p><b>Error: </b>
+        <p><b></b>
         {error}
         </p>
     </div>

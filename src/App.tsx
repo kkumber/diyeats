@@ -8,6 +8,7 @@ import Ingredients from './components/Ingredients';
 import Navbar from './pages/Navbar';
 import Favorites from './pages/Favorites';
 import Header from './components/Header';
+import Explore from './pages/Explore';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
         <Route path='/pages/Search' element={<Search />}/>
         <Route path='/pages/Meal' element={<Meal />}/>
         <Route path='/pages/Favorites' element={<Favorites />} />
+        <Route path='/pages/Explore' element={<Explore />} />
       </Routes>
       </main>
     </div>

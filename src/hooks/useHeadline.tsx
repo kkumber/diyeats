@@ -19,6 +19,10 @@ const useHeadline = () => {
           break;
         case '/pages/Meal':
           setHeadline('Meal Information');
+          break;
+        case '/pages/Explore':
+          setHeadline('Expand your taste buds');
+          break;
       }
     }, [location])
 

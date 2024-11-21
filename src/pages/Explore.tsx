@@ -9,6 +9,7 @@ const Explore = () => {
     const [item, setItem] = useState<ItemInterface[]>([]);
 
     useEffect(() => {
+        console.log(data);
         setItem(data);
     }, [data])
     return ( 

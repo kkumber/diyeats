@@ -12,8 +12,6 @@ const Header = () => {
     const [query, setQuery] = useState<string>('');
     const [number, setNumber] = useState<number>(1);
     const navigate = useNavigate();
-    const {data: itemData, loading, error: dataError} = useFetch(``);
-    const [error, setError] = useState<string | null>(dataError);
 
     const headline = useHeadline();
 

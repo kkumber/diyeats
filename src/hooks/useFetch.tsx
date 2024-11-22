@@ -19,13 +19,17 @@ const useFetch = (url: string) => {
             try {
                 const response = await fetch(url, {signal});
                 if (!response.ok) {
-                    throw new Error(`Error: ${response.statusText}`);
+                    if (response.status === 401) {
+                        setError("You have reached the search limit for the day.");
+                    } else {
+                        throw new Error(`HTTP error: ${response.status} ${response.statusText}`);
+                    }
                 }
                 const jsonData = await response.json();
                 setData(jsonData);
             } catch (err: any) {
                 if (err.name !== 'AbortError') {
-                setError((err as Error).message);
+                setError((err as Error).message || "An unknown error occurred");
                 }
             } finally {
                 if (!signal.aborted){
@@ -41,8 +45,7 @@ const useFetch = (url: string) => {
         }
     }, [url])
 
-
-    return { data, loading, error }
+    return {data, loading, error}; 
 }
 
 export default useFetch;

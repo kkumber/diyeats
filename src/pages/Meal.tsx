@@ -4,7 +4,8 @@ import { useLocation } from "react-router-dom";
 import NutritionWidget from "../components/NutritionWidget";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBowlFood, faStopwatch, faUtensils } from "@fortawesome/free-solid-svg-icons";
-
+import Loading from "../components/Loading";
+import ErrorPage from "../components/ErrorPage";
 
 interface Ingredients {
     id: number;
@@ -63,6 +64,8 @@ const Meal = () => {
 
     return (
         <div className="parentContainer">
+        {loading && <Loading />}
+        {error && <ErrorPage error={error} />}
 
         <div className="mx-4 grid md:grid-cols-2 gap-8">
             {/* Left Side */}

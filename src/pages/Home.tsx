@@ -17,7 +17,7 @@ export interface ItemInterface {
 const Home = () => {
 
     return (
-        <div className="home">
+        <div className="my-4">
             <Ingredients />
         </div>
     )

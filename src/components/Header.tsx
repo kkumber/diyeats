@@ -3,17 +3,36 @@ import useFetch from "../hooks/useFetch";
 import { useNavigate } from "react-router-dom";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useLocation } from "react-router-dom";
 
 
 const Header = () => {
     const APIKEY = 'ae98638f897c4eb79d6f212f141affb8';
     const [query, setQuery] = useState<string>('');
-    const [number, setNumber] = useState<number>(5);
+    const [number, setNumber] = useState<number>(1);
     const navigate = useNavigate();
-
     const {data: itemData, loading, error: dataError} = useFetch(``);
     const [error, setError] = useState<string | null>(dataError);
 
+    const location = useLocation();
+    const currentPath = location.pathname;
+    const [headline, setHeadline] = useState('Welcome');
+
+    useEffect(() => {
+      switch (currentPath) {
+        case '/':
+          setHeadline("Welcome");
+          break;
+        case '/pages/Favorites':
+          setHeadline('Your favorite foods all in one place');
+          break;
+        case '/pages/Search':
+          setHeadline('Find the recipe you like');
+          break;
+        case '/pages/Meal':
+          setHeadline('Meal Information');
+      }
+    }, [location])
 
     const handleQuery = (e: React.FormEvent<HTMLFormElement>): void => {
         e?.preventDefault();
@@ -32,15 +51,15 @@ const Header = () => {
           </div>
         <div className="flex items-start">
           <button className="rounded-2xl bg-milky-white px-4 py-1 mt-3 text-milky-brown items-center
-          sm:px-6
-          ">Log in</button>
+           sm:px-6
+          ">Contact us</button>
         </div>
       </div>
 
       <div className="flex flex-col items-center justify-center px-4 sm:mt-8">
           <div>
           <h1 className="text-white text-2xl font-montserrat my-4
-          sm:mb-6 sm:text-3xl md:text-5xl">Find a recipe you like</h1>
+          sm:mb-6 sm:text-3xl md:text-5xl">{headline}</h1>
           </div>
 
     <form onSubmit={handleQuery} className="relative w-full max-w-md flex items-center justify-center
@@ -63,7 +82,6 @@ const Header = () => {
             </div>
       </div>
     
-  
     </header>
   );
 };

@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useLocation } from "react-router-dom";
+import useHeadline from "../hooks/useHeadline";
 
 
 const Header = () => {
@@ -14,25 +15,7 @@ const Header = () => {
     const {data: itemData, loading, error: dataError} = useFetch(``);
     const [error, setError] = useState<string | null>(dataError);
 
-    const location = useLocation();
-    const currentPath = location.pathname;
-    const [headline, setHeadline] = useState('Welcome');
-
-    useEffect(() => {
-      switch (currentPath) {
-        case '/':
-          setHeadline("Welcome");
-          break;
-        case '/pages/Favorites':
-          setHeadline('Your favorite foods all in one place');
-          break;
-        case '/pages/Search':
-          setHeadline('Find the recipe you like');
-          break;
-        case '/pages/Meal':
-          setHeadline('Meal Information');
-      }
-    }, [location])
+    const headline = useHeadline();
 
     const handleQuery = (e: React.FormEvent<HTMLFormElement>): void => {
         e?.preventDefault();

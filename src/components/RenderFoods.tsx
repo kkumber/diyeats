@@ -15,7 +15,7 @@ const RenderFoods = ({item}: Foods) => {
 
   return (
     // Foods Container
-    <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 auto-rows-auto">
+    <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 auto-rows-auto my-4">
         {item.map(food => 
         // Card Container
                 <div className="bg-light-brown p-4 rounded-xl cursor-pointer max-h-min" 

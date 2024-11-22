@@ -18,7 +18,7 @@ const RenderFoods = ({item}: Foods) => {
     <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 auto-rows-auto my-4">
         {item.map(food => 
         // Card Container
-                <div className="bg-light-brown p-4 rounded-xl cursor-pointer max-h-min" 
+                <div className="bg-light-brown p-4 rounded-xl cursor-pointer" 
                 key={food.id}>
                     {/* Top Content */}
                     <div className="w-full mb-5" onClick={() => navigateToRecipe(food.id)}>

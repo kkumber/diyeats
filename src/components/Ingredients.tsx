@@ -39,7 +39,43 @@ const Ingredients = () => {
             name: 'Salmon',
             image: '/images/salmon.jpg',
             id: 5
-        }]
+        },
+        {
+            name: 'Flour',
+            image: 'images/flour.jpg',
+            id: 6
+        },
+        {
+            name: 'Legumes',
+            image: 'images/legumes.jpg',
+            id: 7
+        },
+        {
+            name: 'Fish',
+            image: 'images/fish.jpg',
+            id: 8
+        },
+        {
+            name: 'Rice',
+            image: 'images/rice.jpg',
+            id: 9
+        },
+        {
+            name: 'Potato',
+            image: 'images/potato.jpg',
+            id: 10
+        },
+        {
+            name: 'Pasta',
+            image: 'images/pasta.jpg',
+            id: 11
+        },
+        {
+            name: 'Milk',
+            image: 'images/milk.jpg',
+            id: 12
+        }
+    ]
     );
     }, [])
 
@@ -51,12 +87,12 @@ const Ingredients = () => {
         // Main Container
         <div className="mx-4">
             <div className="mt-4 mb-2 sm:mt-12 sm:mb-4">
-               <span className="font-montserrat font-bold text-xl sm:text-3xl">Popular Ingredients</span>
+               <span className="font-montserrat font-bold text-xl sm:text-3xl">Popular Main Ingredients</span>
             </div>
 
 
          {/* Cards Container */}
-            <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
 
             {
                 ingredients?.map(ingredient =>
@@ -64,8 +100,8 @@ const Ingredients = () => {
                     <div className="bg-light-brown p-4 rounded-xl cursor-pointer" 
                     key={ingredient.id} onClick={() => handleSearch(ingredient.name)}>
                         {/* Top Part */}
-                        <div className="w-full h-3/4 mb-5">
-                            <img src={ingredient.image} alt="ingredient image" className="rounded-xl w-full h-full"/>
+                        <div className="w-full mb-5">
+                            <img src={ingredient.image} alt="ingredient image" className="rounded-xl w-full h-44 object-cover"/>
                         </div>
                         
                         {/* Bottom Part */}

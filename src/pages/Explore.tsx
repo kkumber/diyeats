@@ -7,7 +7,7 @@ import ErrorPage from "../components/ErrorPage";
 
 const Explore = () => {
     const APIKEY = process.env.REACT_APP_API_KEY;
-    const {data, loading, error} = useFetch(`https://api.spoonacular.com/recipes/random?apiKey=${APIKEY}&number=20`);
+    const {data, loading, error} = useFetch(`https://api.spoonacular.com/recipes/random?apiKey=${APIKEY}&number=10`);
     const [item, setItem] = useState<ItemInterface[]>([]);
 
     useEffect(() => {

@@ -13,7 +13,7 @@ const Search = () => {
     const location = useLocation();
     const queryParams = new URLSearchParams(location.search);
     const query = queryParams.get('query') || '';
-    const number = queryParams.get('number') || 1;
+    const number = queryParams.get('number') || 3;
 
     const {data, loading, error} = useFetch(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${APIKEY}&query=${query}&number=${number}`);
     const [item, setItem] = useState<ItemInterface[]>([]);

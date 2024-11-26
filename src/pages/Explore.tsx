@@ -12,17 +12,16 @@ const Explore = () => {
 
     useEffect(() => {
         if (data && data.recipes) {
-            console.log(data);
             setItem(data.recipes);
         }
     }, [data])
     return ( 
         <div className="exploreContainer mx-4">
-            {loading && <Loading />}
-            {error && <ErrorPage error={error} />}
             <div className="mt-4 mb-2 sm:mt-12 sm:mb-4">
                <span className="font-montserrat font-bold text-xl sm:text-3xl">Explore</span>
             </div>
+            {loading && <Loading />}
+            {error && <ErrorPage error={error} />}
             <RenderFoods item={item} />
         </div>
      );

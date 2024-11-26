@@ -17,7 +17,6 @@ const Search = () => {
 
     const {data, loading, error} = useFetch(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${APIKEY}&query=${query}&number=${number}`);
     const [item, setItem] = useState<ItemInterface[]>([]);
-    console.log(APIKEY)
 
     useEffect(() => {
         if (data && data.results) {
@@ -36,7 +35,8 @@ const Search = () => {
             </div>
             {loading && <Loading />}
             {error && <ErrorPage error={error} />}
-            {item && <RenderFoods item={item} />}
+            {item.length <= 0 ? <p>No result was found</p> :
+            item && <RenderFoods item={item}/>}
         </div>
     );
 }

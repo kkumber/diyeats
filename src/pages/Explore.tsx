@@ -11,11 +11,13 @@ const Explore = () => {
     const [item, setItem] = useState<ItemInterface[]>([]);
 
     useEffect(() => {
-        console.log(data);
-        setItem(data.recipes);
+        if (data && data.recipes) {
+            console.log(data);
+            setItem(data.recipes);
+        }
     }, [data])
     return ( 
-        <div className="exploreContainer">
+        <div className="exploreContainer mx-4">
             {loading && <Loading />}
             {error && <ErrorPage error={error} />}
             <div className="mt-4 mb-2 sm:mt-12 sm:mb-4">

@@ -26,9 +26,9 @@ const FavoritesButton = ({food}: Food) => {
     return ( 
         <>
         <button className="cursor-pointer" onClick={() => handleFavorites(food)}>
-            {isFavorite(food) ? <FontAwesomeIcon icon={SolidHeart} style={{color: "#ff0000",}} size="2xl" className="hover:scale-125 transition-all"/>
+            {isFavorite(food) ? <FontAwesomeIcon icon={SolidHeart} style={{color: "#ff0000",}} size="xl" className="hover:scale-125 transition-all"/>
             : 
-            <FontAwesomeIcon icon={RegularHeart} size="2xl" className="hover:text-red-700 hover:scale-125 transition-all"/>}
+            <FontAwesomeIcon icon={RegularHeart} size="xl" className="hover:text-red-700 hover:scale-125 transition-all"/>}
         </button>
         </>
      );

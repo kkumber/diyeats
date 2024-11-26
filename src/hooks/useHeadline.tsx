@@ -12,7 +12,7 @@ const useHeadline = () => {
           setHeadline("Welcome");
           break;
         case '/pages/Favorites':
-          setHeadline('Your favorite foods all in one place');
+          setHeadline('All in one place');
           break;
         case '/pages/Search':
           setHeadline('Find the recipe you like');

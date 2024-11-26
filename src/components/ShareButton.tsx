@@ -19,7 +19,7 @@ const ShareButton = ({foodId}: FoodID) => {
     return ( 
         <>
         <button className="" onClick={() => handleCopyLink(foodId)}>
-            <FontAwesomeIcon icon={faPaperclip} size="2xl" className="hover:scale-125 transition-all"/>
+            <FontAwesomeIcon icon={faPaperclip} size="xl" className="hover:scale-125 transition-all"/>
         </button>
         </>
      );

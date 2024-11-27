@@ -16,7 +16,7 @@ const Explore = () => {
         }
     }, [data])
     return ( 
-        <div className="exploreContainer mx-4">
+        <div className="exploreContainer">
             <div className="mt-4 mb-2 sm:mt-12 sm:mb-4">
                <span className="font-montserrat font-bold text-xl sm:text-3xl">Explore</span>
             </div>

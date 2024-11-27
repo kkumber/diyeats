@@ -85,14 +85,13 @@ const Ingredients = () => {
 
     return ( 
         // Main Container
-        <div className="mx-4">
+        <div className="">
             <div className="mt-4 mb-2 sm:mt-12 sm:mb-4">
                <span className="font-montserrat font-bold text-xl sm:text-3xl">Popular Main Ingredients</span>
             </div>
 
-
          {/* Cards Container */}
-            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 w-full">
 
             {
                 ingredients?.map(ingredient =>

@@ -15,10 +15,12 @@ function App() {
     <Router>
     <div className="App">
       <Header />
-      <Navbar />
-      <main>
+      <div className="px-4">
+        <Navbar />
+      </div>
+      <main className="px-4">
       <Routes>
-        <Route path='/' element={<Home />} />
+        <Route path='/' element={<Home />}/>
         <Route path='/pages/Search' element={<Search />}/>
         <Route path='/pages/Meal' element={<Meal />}/>
         <Route path='/pages/Favorites' element={<Favorites />} />

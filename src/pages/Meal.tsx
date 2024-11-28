@@ -115,10 +115,10 @@ const Meal = () => {
                     </div>
                 </div>
 
-
+                
                 {/* Nutrition Fact */}
                 <div className="my-8 grid gap-y-4">
-                    <h1 className="font-montserrat text-2xl text-center sm:text-4xl font-bold">Nutrition Facts</h1>
+                    <h1 className="font-montserrat text-center text-2xl sm:text-4xl font-bold">Nutrition Facts</h1>
                     <NutritionWidget foodId={foodId} APIKEY={APIKEY} />
                 </div> 
                 

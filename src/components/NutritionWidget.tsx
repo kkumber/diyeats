@@ -52,7 +52,7 @@ const NutritionWidget = ({foodId, APIKEY}: Widget) => {
     }, [data])
 
     useEffect(() => {
-        const neededValues = ['Calories', 'Fat', 'Carbohydrates', 'Protein'];
+        const neededValues = ['Calories', 'Fat', 'Carbohydrates', 'Protein', 'Sugar'];
         const nutrientsArray = nutrients.filter(nutrient => neededValues.includes(nutrient.name));
         const datas = {
             labels: nutrientsArray.map(nutrient => nutrient.name), 
@@ -64,7 +64,8 @@ const NutritionWidget = ({foodId, APIKEY}: Widget) => {
                   "rgb(255, 99, 132)",
                   "rgb(54, 162, 235)",
                   "rgb(255, 205, 86)",
-                  "rgb(75, 192, 192)", 
+                  "rgb(75, 192, 192)",
+                  "#fc9b2d" 
                 ],
                 hoverOffset: 4,
               },
@@ -76,6 +77,7 @@ const NutritionWidget = ({foodId, APIKEY}: Widget) => {
         Fat: "g",
         Carbohydrates: "g",
         Protein: "g",
+        Sugar: "g"
         };
 
           setOptions({
@@ -103,7 +105,7 @@ const NutritionWidget = ({foodId, APIKEY}: Widget) => {
       <>
         {loading && <Loading />}
         {error && <ErrorPage error={error} />}
-        <div className="w-full h-80">
+        <div className="w-full h-96">
           {pieData && <Pie data={pieData} options={options}/>}
         </div>
     </> 

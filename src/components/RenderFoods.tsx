@@ -3,14 +3,30 @@ import useNavigateToRecipe from "../hooks/useNavigateToRecipe";
 import useFavorites from "../hooks/useFavorites";
 import FavoritesButton from "./FavoritesButton";
 import ShareButton from "./ShareButton";
+import { useEffect, useState } from "react";
 
 
 interface Foods {
     item: ItemInterface[];
 }
 
-const RenderFoods = ({item}: Foods) => {
- 
+const RenderFoods = ({item: props}: Foods) => {
+    const [item, setItem] = useState<ItemInterface[]>(props);
+    const {favorites, isFavorite, addToFavorites, removeToFavorites} = useFavorites();
+
+    const handleFavorites = (newItem : ItemInterface) => {
+        if (!isFavorite(newItem)) {
+            addToFavorites(newItem);
+            alert('Added to Favorites!');
+        } else {
+            removeToFavorites(newItem);
+            alert("Removed from Favorites!");
+        }
+    }
+
+    useEffect(() => {
+        setItem(props);
+    }, [props])
     const navigateToRecipe = useNavigateToRecipe();
 
   return (
@@ -33,7 +49,7 @@ const RenderFoods = ({item}: Foods) => {
                         </div>
                         <div className="flex gap-x-2">
                             <ShareButton foodId={food.id} />
-                            <FavoritesButton food={food} />
+                            <FavoritesButton food={food} handleFavorites={handleFavorites} isFavorite={isFavorite} />
                         </div>
                     </div>
                 </div>

@@ -7,22 +7,13 @@ import { faHeart as RegularHeart } from "@fortawesome/free-regular-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 interface Food {
-    food: ItemInterface
+    food: ItemInterface,
+    handleFavorites: (newItem: ItemInterface) => void,
+    isFavorite: (newItem: ItemInterface) => boolean
+
 }
 
-const FavoritesButton = ({food}: Food) => {
-    const {favorites, isFavorite, addToFavorites, removeToFavorites} = useFavorites();
-
-    const handleFavorites = (newItem : ItemInterface) => {
-        if (!isFavorite(newItem)) {
-            addToFavorites(newItem);
-            alert('Added to Favorites!');
-        } else {
-            removeToFavorites(newItem);
-            alert("Removed from Favorites!");
-        }
-    }
-
+const FavoritesButton = ({food, handleFavorites, isFavorite}: Food) => {
     return ( 
         <>
         <button className="cursor-pointer" onClick={() => handleFavorites(food)}>

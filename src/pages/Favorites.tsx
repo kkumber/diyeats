@@ -14,8 +14,8 @@ const Favorites = () => {
             <div className="mt-4 mb-2 sm:mt-12 sm:mb-4">
                <span className="font-montserrat font-bold text-xl sm:text-3xl">Favorites</span>
             </div>
-        {!item && <p>No favorites yet</p>}
-        {item &&<RenderFoods item={item} /> }
+        {item.length <= 0 ? <p>No favorites yet</p> :
+        item &&<RenderFoods item={item} /> }
     </div> );
 }
  

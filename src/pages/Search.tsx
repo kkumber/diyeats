@@ -29,7 +29,7 @@ const Search = () => {
 
     return (
         // Results Container
-        <div className="mx-4">
+        <div className="">
             <div className="mt-4 mb-2 sm:mt-12 sm:mb-4">
                <span className="font-montserrat font-bold text-xl sm:text-3xl">Results</span>
             </div>

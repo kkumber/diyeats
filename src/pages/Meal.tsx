@@ -67,7 +67,7 @@ const Meal = () => {
         {loading && <Loading />}
         {error && <ErrorPage error={error} />}
 
-        <div className="mx-4 grid md:grid-cols-2 gap-8">
+        <div className="grid md:grid-cols-2 gap-8">
             {/* Left Side */}
             <div className="leftSide">
                 <div className="mealContainer">
@@ -115,10 +115,10 @@ const Meal = () => {
                     </div>
                 </div>
 
-
+                
                 {/* Nutrition Fact */}
-                <div className="my-8">
-                    <h1 className="font-montserrat text-2xl sm:text-4xl font-bold">Nutrition Facts</h1>
+                <div className="my-8 grid gap-y-4">
+                    <h1 className="font-montserrat text-center text-2xl sm:text-4xl font-bold">Nutrition Facts</h1>
                     <NutritionWidget foodId={foodId} APIKEY={APIKEY} />
                 </div> 
                 
@@ -146,7 +146,7 @@ const Meal = () => {
             </div>
          </div>
                 {/* Instructions */}
-                <div className="my-8 mx-4">
+                <div className="my-8">
                     <div className="my-4">
                         <h1 className="font-montserrat text-2xl sm:text-4xl font-bold">Instructions</h1>
                     </div>

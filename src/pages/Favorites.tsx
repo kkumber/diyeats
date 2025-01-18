@@ -9,6 +9,10 @@ import RenderFoods from "../components/RenderFoods";
 const Favorites = () => {
     const item = useLocalStorage('favorites');
 
+    useEffect(() => {
+        console.log(item);
+    }, [item])
+
     return ( 
     <div className="">
             <div className="mt-4 mb-2 sm:mt-12 sm:mb-4">

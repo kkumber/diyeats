@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
-import useFetch from "../hooks/useFetch";
+import useFetch from "../../hooks/useFetch";
 import { useLocation } from "react-router-dom";
-import NutritionWidget from "../components/NutritionWidget";
+import NutritionWidget from "../../components/Renders/NutritionWidget";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBowlFood, faStopwatch, faUtensils } from "@fortawesome/free-solid-svg-icons";
-import Loading from "../components/Loading";
-import ErrorPage from "../components/ErrorPage";
+import Loading from "../../components/Loading";
+import ErrorPage from "../../components/ErrorPage";
 
 interface Ingredients {
     id: number;

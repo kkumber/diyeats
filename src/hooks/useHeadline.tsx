@@ -6,6 +6,7 @@ const useHeadline = () => {
     const currentPath = location.pathname;
     const [headline, setHeadline] = useState('Welcome');
 
+    // Change headline base on location pathname
     useEffect(() => {
       switch (currentPath) {
         case '/':

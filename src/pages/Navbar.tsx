@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import Home from "./Home";
+import Home from "./Main/Home";
 import { useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 

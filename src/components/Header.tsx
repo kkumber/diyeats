@@ -5,19 +5,27 @@ import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useLocation } from "react-router-dom";
 import useHeadline from "../hooks/useHeadline";
-
+import { Link } from "react-router-dom";
+import { useAccessTokenContext } from "../pages/AuthPages/AuthProvider";
+import useAuthFetch from "../hooks/AuthHooks/useAuthFetch";
 
 const Header = () => {
     const APIKEY = process.env.REACT_APP_API_KEY;
     const [query, setQuery] = useState<string>('');
     const [number, setNumber] = useState<number>(5);
     const navigate = useNavigate();
-
     const headline = useHeadline();
+    const {accessToken, setAccessToken} = useAccessTokenContext();
+    const {authFetch} = useAuthFetch();
 
     const handleQuery = (e: React.FormEvent<HTMLFormElement>): void => {
         e?.preventDefault();
         navigate(`/pages/Search?query=${encodeURIComponent(query)}&number=${number}`);
+    }
+
+    const handleLogout = () => {
+      authFetch('accounts/auth/logout/', null);
+      setAccessToken(null);
     }
   return (
     <header className="h-60 relative
@@ -31,9 +39,26 @@ const Header = () => {
           <img src="/images/DIYeatsLogo.png" alt="Logo" className="w-full"/>
           </div>
         <div className="flex items-start">
-          <button className="rounded-2xl bg-milky-white px-4 py-1 mt-3 text-milky-brown items-center
+          {!accessToken ? 
+          (
+            <button className="rounded-2xl bg-milky-white px-4 py-1 mt-3 text-milky-brown items-center
            sm:px-6 hover:text-black
-          ">Contact us</button>
+            "><Link to={'/login'}>
+                Sign in
+              </Link>
+            </button>
+            ) 
+            : 
+            (
+              <button className="rounded-2xl bg-milky-white px-4 py-1 mt-3 text-milky-brown items-center
+              sm:px-6 hover:text-black
+               " onClick={() => handleLogout()}>
+                <Link to={'/login'}>
+                   Sign out
+                 </Link>
+               </button>
+            )
+          }
         </div>
       </div>
 

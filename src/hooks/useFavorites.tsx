@@ -1,28 +1,72 @@
-import { ItemInterface } from "../pages/Home";
-import useLocalStorage from "./useLocalStorage";
+import { ItemInterface } from "../pages/Main/Home";
 import { useEffect, useState } from "react";
+import useApi from "../api";
+import { useFavoritesContext } from "../pages/AuthPages/AuthProvider";
+
+type Err = string | null
 
 const useFavorites = () => {
-    const [favorites, setFavorites] = useState<ItemInterface[]>(useLocalStorage('favorites'));
+    const [data, setData] = useState(null);
+    const [isLoading, setLoading] = useState<boolean>(false);
+    const [err, setErr] = useState<Err>(null);
+    const api = useApi();
+    const {setFavorites} = useFavoritesContext();
 
-    const isFavorite = (newItem: ItemInterface) => {
-        const found = favorites.some(item => item.id === newItem.id);
-        return found;
+    const getFavorites = async () => {
+        setLoading(true);
+        setErr(null);
+        try {
+            const res = await api.get('favorites/list/', {
+                withCredentials: true
+            })
+            setData(res.data);
+            setFavorites(res.data);
+        } catch (err) {
+            if (err instanceof Error) {
+                setErr(err.message);
+            }
+        } finally {
+            setLoading(false);
+        }  
     }
 
-    const addToFavorites = (newItem: ItemInterface) => {
-        const updatedList = [...favorites, newItem];
-        setFavorites(updatedList);
-        localStorage.setItem('favorites', JSON.stringify(updatedList));
+    const addToFavorites = async (newItem: ItemInterface) => {
+        setLoading(true);
+        setErr(null);
+        console.log(newItem);
+        try {
+            const res = await api.post('favorites/list/', newItem, {
+                withCredentials: true
+        })
+            setFavorites(res.data);
+        } catch (err) {
+            if (err instanceof Error) {
+                setErr(err.message);
+            }
+        } finally {
+            setLoading(false);
+        }  
     }
 
-    const removeToFavorites = (newItem: ItemInterface) => {
-        const updatedList = favorites.filter(item => item.id !== newItem.id);
-        setFavorites(updatedList);
-        localStorage.setItem('favorites', JSON.stringify(updatedList));
+    const removeToFavorites = async (newItem: ItemInterface) => {
+        setLoading(true);
+        setErr(null);
+        try {
+            const res = await api.delete(`favorites/list/delete/${newItem.id}/`, {
+                withCredentials: true
+        })
+            setData(res.data);
+            setFavorites(res.data);
+        } catch (err) {
+            if (err instanceof Error) {
+                setErr(err.message);
+            }
+        } finally {
+            setLoading(false);
+        }  
     }
 
-    return {favorites, isFavorite, addToFavorites, removeToFavorites}
+    return {data, isLoading, err, getFavorites, addToFavorites, removeToFavorites}
 }
 
 export default useFavorites;

@@ -6,7 +6,7 @@ const useApi = () => {
     const {csrfToken} = useCSRFTokenContext()
     
     const api = axios.create({
-        baseURL: 'http://127.0.0.1:8000/',
+        baseURL: 'https://diyeats-backend.onrender.com/',
         headers: {
             'Content-Type': 'application/json',
         }

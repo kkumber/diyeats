@@ -17,3 +17,8 @@ A modern, interactive recipe finder app that empowers users to discover, explore
 - **Hosting**: Vercel  
 - **Responsive Design**: Optimized for mobile, tablet, and desktop.  
 
+- **Backend**: Django
+- **Database**: PostgreSQL
+- **API**: Django Rest Framework  
+- **Hosting**: Render 
+

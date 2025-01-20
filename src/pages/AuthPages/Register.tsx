@@ -15,6 +15,7 @@ const Register = () => {
         if (userData) {
             authFetch('accounts/auth/register/', userData);
         }
+        nav('/login');
     };
 
     const handleChangeuserData = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -22,8 +23,7 @@ const Register = () => {
         setUserData({
             ...userData,
             [name]: value
-        });
-        nav('/login');
+        }); 
     }
 
     const handleRedirect = () => {

@@ -1,7 +1,7 @@
 import { useState } from "react";
-import handleFavorites from "../hooks/useFavorites";
-import { ItemInterface } from "../pages/Home";
-import useFavorites from "../hooks/useFavorites";
+import handleFavorites from "../../hooks/useFavorites";
+import { ItemInterface } from "../../pages/Main/Home";
+import useFavorites from "../../hooks/useFavorites";
 import { faHeart as SolidHeart } from "@fortawesome/free-solid-svg-icons";
 import { faHeart as RegularHeart } from "@fortawesome/free-regular-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -9,7 +9,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 interface Food {
     food: ItemInterface,
     handleFavorites: (newItem: ItemInterface) => void,
-    isFavorite: (newItem: ItemInterface) => boolean
+    isFavorite: (food: ItemInterface) => boolean | undefined
 
 }
 

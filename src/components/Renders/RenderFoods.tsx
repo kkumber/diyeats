@@ -1,9 +1,10 @@
-import { ItemInterface } from "../pages/Home";
-import useNavigateToRecipe from "../hooks/useNavigateToRecipe";
-import useFavorites from "../hooks/useFavorites";
-import FavoritesButton from "./FavoritesButton";
-import ShareButton from "./ShareButton";
+import { ItemInterface } from "../../pages/Main/Home";
+import useNavigateToRecipe from "../../hooks/useNavigateToRecipe";
+import useFavorites from "../../hooks/useFavorites";
+import FavoritesButton from "../Buttons/FavoritesButton";
+import ShareButton from "../Buttons/ShareButton";
 import { useEffect, useState } from "react";
+import { useFavoritesContext } from "../../pages/AuthPages/AuthProvider";
 
 
 interface Foods {
@@ -12,9 +13,21 @@ interface Foods {
 
 const RenderFoods = ({item: props}: Foods) => {
     const [item, setItem] = useState<ItemInterface[]>(props);
-    const {favorites, isFavorite, addToFavorites, removeToFavorites} = useFavorites();
+    const {getFavorites, addToFavorites, removeToFavorites} = useFavorites();
+    const {favorites, setFavorites} = useFavoritesContext();
+    const navigateToRecipe = useNavigateToRecipe();
 
-    const handleFavorites = (newItem : ItemInterface) => {
+    // Check if array before using include method
+    const isFavorite = (food: ItemInterface): boolean | undefined => {
+        if (Array.isArray(favorites)) {
+            return favorites.includes(food);
+        } else {
+            return false;
+        }
+    }
+    
+    // Make a request based on the result of isFavorite
+    const handleFavorites = (newItem: ItemInterface) => {
         if (!isFavorite(newItem)) {
             addToFavorites(newItem);
             alert('Added to Favorites!');
@@ -23,11 +36,10 @@ const RenderFoods = ({item: props}: Foods) => {
             alert("Removed from Favorites!");
         }
     }
-
+    
     useEffect(() => {
         setItem(props);
     }, [props])
-    const navigateToRecipe = useNavigateToRecipe();
 
   return (
     // Foods Container

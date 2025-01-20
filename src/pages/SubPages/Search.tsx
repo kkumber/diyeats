@@ -1,10 +1,11 @@
-import { ItemInterface } from "./Home";
-import useFetch from "../hooks/useFetch";
+import Home from "../Main/Home";
+import useFetch from "../../hooks/useFetch";
 import { useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
-import RenderFoods from "../components/RenderFoods";
-import Loading from "../components/Loading";
-import ErrorPage from "../components/ErrorPage";
+import RenderFoods from "../../components/Renders/RenderFoods";
+import Loading from "../../components/Loading";
+import ErrorPage from "../../components/ErrorPage";
+import { ItemInterface } from "../Main/Home";
 
 
 const Search = () => {
@@ -23,9 +24,6 @@ const Search = () => {
             setItem(data.results);
         }
     }, [data]);
-
-
-
 
     return (
         // Results Container

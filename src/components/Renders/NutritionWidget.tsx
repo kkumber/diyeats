@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
-import Loading from "./Loading";
-import ErrorPage from "./ErrorPage";
-import useFetch from "../hooks/useFetch";
+import Loading from "../Loading";
+import ErrorPage from "../ErrorPage";
+import useFetch from "../../hooks/useFetch";
 import { Pie } from "react-chartjs-2";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 

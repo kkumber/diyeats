@@ -1,9 +1,9 @@
-import useFetch from "../hooks/useFetch";
-import RenderFoods from "../components/RenderFoods";
+import useFetch from "../../hooks/useFetch";
+import RenderFoods from "../../components/Renders/RenderFoods";
 import { useEffect, useState } from "react";
 import { ItemInterface } from "./Home";
-import Loading from "../components/Loading";
-import ErrorPage from "../components/ErrorPage";
+import Loading from "../../components/Loading";
+import ErrorPage from "../../components/ErrorPage";
 
 const Explore = () => {
     const APIKEY = process.env.REACT_APP_API_KEY;

@@ -31,6 +31,7 @@ const Login = () => {
 
   return (
     <div className="flex justify-center items-center transition-all duration-500 ease-in-out my-12">
+      {isLoading && <Loading />}
       <form onSubmit={handleSubmit}>
         <h2 className="text-5xl mb-8 text-center">
           <b>Login</b>

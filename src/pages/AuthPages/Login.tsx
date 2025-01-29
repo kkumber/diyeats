@@ -3,6 +3,7 @@ import useAuthFetch from "../../hooks/AuthHooks/useAuthFetch";
 import ErrorPage from "../../components/ErrorPage";
 import Loading from "../../components/Loading";
 import { useNavigate } from "react-router-dom";
+import { error } from "console";
 
 const Login = () => {
   const { data, isLoading, err, authFetch } = useAuthFetch();
@@ -32,6 +33,7 @@ const Login = () => {
   return (
     <div className="flex justify-center items-center transition-all duration-500 ease-in-out my-12">
       {isLoading && <Loading />}
+      {err && <ErrorPage error={err} />}
       <form onSubmit={handleSubmit}>
         <h2 className="text-5xl mb-8 text-center">
           <b>Login</b>
